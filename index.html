@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login & Signup Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-form">
+      <h1>Login</h1>
+      <form action="home.html" method="post">
+        <input id="uName" type="email" name="email" placeholder="Email">
+        <input id="passwd" type="password" name="password" placeholder="Password">
+        <button id="loginBtn" type="submit">Login</button>
+        <p>New user? Please <a href="#" id="signUpLink">Sign up</a></p>
+      </form>
+    </div>
+
+    <div class="signup-form" style="display: none;">
+      <h1>Signup</h1>
+      <form action="/signup" method="post">
+        <input id="upName" type="text" name="name" placeholder="Name">
+        <input id="email" type="email" name="email" placeholder="Email">
+        <input id="password" type="password" name="password" placeholder="Password">
+        <button id="signUpBtn" type="submit">Signup</button>
+        <p>Back to <a href="#" id="loginLink">login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
