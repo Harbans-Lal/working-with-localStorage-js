@@ -48,10 +48,12 @@ document.getElementById('signUpBtn')?.addEventListener('click' ,  (e)=>{
     updateUi();
 })
 
+let tBody = document.getElementById('tBody');
+let userDate = JSON.parse(localStorage.getItem('users'));
 function updateUi(){
-    let userDate = JSON.parse(localStorage.getItem('users'));
+
     console.log(userDate);
-    let tBody = document.getElementById('tBody');
+
     tBody.innerHTML = "";
     userDate.map((data,ind) =>{
         let tr  = document.createElement( 'tr') ;
@@ -70,20 +72,12 @@ function updateUi(){
 
 updateUi();
 
-let deleteUser  = document.querySelectorAll('.delete');
-deleteUser.forEach(deleteLink => {
-    deleteLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        let currTr = e.target.closest('tr');
-        let uniqueId = e.target.getAttribute('id');
-        removeUser(uniqueId);
-    });
-});
+tBody.addEventListener('click', (e)=>{
+    if(e.target.classList.contains('delete')){
+        let id  = e.target.getAttribute('id');
+        userDate.splice(id,1);
 
-function removeUser(id){
-    let getallUser = JSON.parse(localStorage.getItem('users')) || [];
-    let index = parseInt(id);
-    getallUser.splice(index, 1);
-    localStorage.setItem('users', JSON.stringify(getallUser));
-    updateUi();
-}
+        localStorage.setItem('users',JSON.stringify(userDate));
+        updateUi();
+    }
+})
